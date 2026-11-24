@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catur Master - Game Catur Berbasis Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">♔</span>
+        <h1>Catur Master</h1>
+      </div>
+      <div class="header-controls">
+        <select id="modeSelect" title="Mode Permainan">
+          <option value="ai">Vs Komputer (AI)</option>
+          <option value="pvp">2 Pemain Lokal</option>
+        </select>
+        <select id="difficultySelect" title="Tingkat Kesulitan AI">
+          <option value="1">Mudah</option>
+          <option value="2" selected>Sedang</option>
+          <option value="3">Sulit</option>
+        </select>
+        <select id="themeSelect" title="Tema Papan">
+          <option value="emerald">Tema: Zamrud</option>
+          <option value="wood">Tema: Kayu Klasik</option>
+          <option value="slate">Tema: Slate Modern</option>
+          <option value="royal">Tema: Royal Biru</option>
+        </select>
+        <button id="soundToggleBtn" class="icon-btn" title="Suara Aktif/Nonaktif">🔊</button>
+      </div>
+    </header>
+
+    <!-- Area Utama -->
+    <main class="main-content">
+      <!-- Area Papan -->
+      <section class="board-section">
+        <!-- Info Pemain Atas (Hitam secara default) -->
+        <div class="player-bar" id="topPlayerBar">
+          <div class="player-info">
+            <div class="avatar black-avatar">♚</div>
+            <div>
+              <div class="player-name" id="topPlayerName">Komputer (Hitam)</div>
+              <div class="captured-pieces" id="topCaptured"></div>
+            </div>
+          </div>
+          <div class="material-diff" id="topAdvantage"></div>
+        </div>
+
+        <!-- Papan Catur -->
+        <div class="board-wrapper">
+          <div id="chessboard" class="chessboard theme-emerald"></div>
+        </div>
+
+        <!-- Info Pemain Bawah (Putih secara default) -->
+        <div class="player-bar" id="bottomPlayerBar">
+          <div class="player-info">
+            <div class="avatar white-avatar">♔</div>
+            <div>
+              <div class="player-name" id="bottomPlayerName">Anda (Putih)</div>
+              <div class="captured-pieces" id="bottomCaptured"></div>
+            </div>
+          </div>
+          <div class="material-diff" id="bottomAdvantage"></div>
+        </div>
+      </section>
+
+      <!-- Panel Samping -->
+      <aside class="side-panel">
+        <div class="status-card">
+          <div class="status-label">Status Permainan</div>
+          <div id="gameStatus" class="status-text">Giliran Putih</div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="newGameBtn" class="btn btn-primary">Permainan Baru</button>
+          <button id="undoBtn" class="btn btn-secondary">↩ Batalkan</button>
+          <button id="flipBtn" class="btn btn-secondary">⇅ Balik Papan</button>
+          <button id="hintBtn" class="btn btn-secondary">💡 Petunjuk</button>
+        </div>
+
+        <div class="history-card">
+          <div class="history-header">Riwayat Langkah</div>
+          <div id="moveHistory" class="move-history"></div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Modal Promosi Pion -->
+  <div id="promotionModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Pilih Promosi Pion</h3>
+      <div class="promotion-options" id="promotionOptions"></div>
+    </div>
+  </div>
+
+  <!-- Modal Akhir Permainan -->
+  <div id="gameOverModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="gameOverTitle">Skakmat!</h2>
+      <p id="gameOverMessage">Putih memenangkan pertandingan.</p>
+      <button id="playAgainBtn" class="btn btn-primary">Main Lagi</button>
+    </div>
+  </div>
+
+  <script src="js/index.js"></script>
+</body>
+</html>
